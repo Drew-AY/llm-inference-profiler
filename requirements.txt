@@ -1,0 +1,9 @@
+transformers>=4.37.0
+python-dotenv>=1.0.0
+
+# For macOS Metal acceleration:
+# Install vllm-metal from: https://github.com/vllm-project/vllm-metal
+# Follow instructions in the repository README
+#
+# For other platforms, use standard vllm:
+# pip install vllm>=0.4.0
