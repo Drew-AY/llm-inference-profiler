@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# kv-cache-profiler
-=======
 # LLM Inference Profiler
 
 An interactive profiler that demonstrates why KV-cache optimization matters for LLM inference. Compares three approaches side-by-side through realistic multi-turn conversations.
@@ -144,4 +141,3 @@ This profiler demonstrates concrete performance differences that matter in produ
 - **Engineering matters** — same algorithm, different implementations, 2-3x difference
 
 The profiler makes these differences visible and measurable.
->>>>>>> 8b22c5b (First commit LLM-inference profiler)
