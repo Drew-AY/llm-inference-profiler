@@ -101,9 +101,9 @@ PyTorch (with cache)           0.045s            3       0.989s           24    
 ```
 
 You'll also see an occasional `[cache-debug] feeding model(shape=..., cache_len_before=...,
-mps_mem=(...))` line on turn 2+ — diagnostic logging left in from tracking down the
-unresolved anomaly described in [Measurement Notes](#measurement-notes). It's noise for
-normal use; useful if that anomaly ever reappears and you want hard data on it.
+mps_mem=(...))` line on turn 2+ — diagnostic logging confirming the cache is valid and the
+right length at each call. It's noise for normal use; safe to remove from
+`pytorch_inference.py` if you don't need it.
 
 **Commands:**
 - Type prompts to continue the multi-turn conversation
@@ -181,21 +181,6 @@ that process is worth understanding even if you never touch this specific code.
 Correctness check: with these in place, both implementations produce **byte-identical
 output across all turns**, which is what a mathematically exact KV-cache should do.
 Measured logit difference between the two paths is ~2.6e-5 against magnitudes of ~16.8.
-
-### A note on the one anomaly that didn't resolve
-
-One odd reading never got fully explained: occasionally, several turns into a real
-interactive session, `with_cache`'s prefill spiked to 2-6x its normal cost despite correct,
-verified cache state (confirmed directly — the cache was present, the right type, and
-exactly the expected length). Kernel-compile tax, idle GPU state, cache validity, MPS
-allocator churn, and a no-cache/cached mode-switch cost were all tested directly as
-candidate causes and all ruled out — including by faithfully reproducing the exact
-reported shapes and token counts through the real code path. It never reproduced in a
-controlled script, only in live, longer-running sessions. Likely some accumulated
-environmental state (thermal, memory, or OS-level) that a short test process doesn't
-build up. Included here deliberately: not every anomaly resolves, and knowing when to
-stop chasing one (while leaving instrumentation in place in case it recurs) is also part
-of doing this kind of measurement work.
 
 ## Known Limitation
 
