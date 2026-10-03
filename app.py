@@ -15,10 +15,10 @@ def interactive_chat():
     comparison = InferenceComparison()
 
     print("\n" + "=" * 90)
-    print("LLM Inference-Profiler - Interactive Comparison")
+    print("LLM Inference-Profiler - PyTorch KV-Cache Comparison")
     print("=" * 90)
-    print("Type prompts to compare inference across PyTorch and vLLM")
-    print("Multi-turn conversations persist KV-cache for realistic comparison")
+    print("Type prompts to compare PyTorch inference with and without KV-cache")
+    print("Multi-turn conversations demonstrate cache reuse benefits")
     print("Type 'reset' to start a new conversation, 'exit'/'quit' to stop\n")
 
     turn = 0

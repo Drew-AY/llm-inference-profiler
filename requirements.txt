@@ -1,9 +1,6 @@
-transformers>=4.37.0
+torch>=2.0.0
+transformers>=4.40.0
+accelerate>=0.26.0
 python-dotenv>=1.0.0
-
-# For macOS Metal acceleration:
-# Install vllm-metal from: https://github.com/vllm-project/vllm-metal
-# Follow instructions in the repository README
-#
-# For other platforms, use standard vllm:
-# pip install vllm>=0.4.0
+sentencepiece>=0.1.99
+tiktoken>=0.5.0
